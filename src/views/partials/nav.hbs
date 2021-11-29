@@ -1,0 +1,25 @@
+<ul class="nav navbar-expand-lg navbar-dark bg-dark">
+  <li class="nav-item">
+    <a class="nav-link active" aria-current="page" href="/">Home</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link active" href="#">About</a>
+  </li>
+  <ul class="nav navbar-nav ml-auto">
+    {{#if user}}
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+        aria-expanded="false">Notas</a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="/notes">Lista de Notas</a>
+        <a class="dropdown-item" href="/notes/add">Nueva Nota</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="/users/logout">Logout</a>
+      </div>
+    </li>
+    {{else}}
+    <li><a class="nav-link active" aria-current="page" href="/users/sign-in">Login</a></li>
+    <li><a class="nav-link active" aria-current="page" href="/users/signup">Register</a></li>
+    {{/if}}
+  </ul>
+</ul> 
