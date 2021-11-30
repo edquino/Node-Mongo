@@ -16,7 +16,7 @@ require('./database');
 require('./config/passport');
 
 //Settings
-app.set('port', process.env.PORT || 4000);
+app.set('port', process.env.PORT || 3000);
 app.set('views', path.join(__dirname,'views'));
 
 //configuracion del motor de plantilla.

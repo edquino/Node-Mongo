@@ -9,7 +9,6 @@ usersCtrl.renderSignUpForm = (req, res) =>{
 
 usersCtrl.signup = async (req, res) =>{
    const { user, name, lastname, email, password, confirm_password} = req.body;
-    console.log(req.body);
    let errors = []
 
    if(password != confirm_password){
