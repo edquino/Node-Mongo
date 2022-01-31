@@ -1,0 +1,104 @@
+<!-- ============================================================== -->
+<!-- Bread crumb and right sidebar toggle -->
+<!-- ============================================================== -->
+<div class="row page-titles">
+    <div class="col-md-5 align-self-center">
+        {{!-- <h3 class="text-themecolor">Starter Page</h3> --}}
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item active"><a href="/">Inicio</a></li>
+            <li class="breadcrumb-item active">Roles</li>
+        </ol>
+    </div>
+    <div class="col-md-7 align-self-center text-right d-none d-md-block">
+        <a class="btn btn-info" href="/api/user-roles/create-rol"><i class="fa fa-plus-circle"></i> Nuevo Rol</a>
+    </div>
+    <div class="">
+        <button
+            class="right-side-toggle waves-effect waves-light btn-inverse btn btn-circle btn-sm pull-right m-l-10"><i
+                class="ti-settings text-white"></i>
+        </button>
+    </div>
+</div>
+<!-- ============================================================== -->
+<!-- End Bread crumb and right sidebar toggle -->
+<!-- ============================================================== -->
+<!-- ============================================================== -->
+<!-- Start Page Content -->
+<!-- ============================================================== -->
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Lista > Roles de Usuario</h4>
+                {{!-- <h6 class="card-subtitle">Add<code>.table-striped</code>for borders on all sides of the table and
+                    cells. --}}
+                </h6>
+                <div class="table-responsive">
+                    <table class="table table-striped color-table inverse-table">
+                        <thead>
+                            <tr>
+                                <th>Tipo de Rol</th>
+                                <th>Descripci&oacute;n</th>
+                                <th>Estado</th>
+                                <th class="text-nowrap" colspan="2">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each roles}}
+                            <tr>
+                                <td><strong>{{nombre}}</strong></td>
+                                <td><strong>{{descripcion}}</strong></td>
+                                {{#showNameEstate estado_rol}}
+                                <td><strong>Activo</strong></td>
+                                {{else}}
+                                <td><strong>Inactivo</strong></td>
+                                {{/showNameEstate}}
+                                <td class="text-nowrap">
+                                    <a href="/api/user-roles/update-rol/{{id_rol_usuario}}" class="btn btn-warning"
+                                        data-toggle="tooltip" data-original-title="Editar registro">Editar</a>
+                                    <a href="/api/user-roles/update-rol/{{id_rol_usuario}}/state" class="btn btn-danger"
+                                        data-toggle="modal" data-target="#delete-rol-modal-{{@index}}" data-toggle="tooltip"
+                                        data-original-title="Eliminar registro">Eliminar</a>
+                                </td>
+                                {{!-- START MODAL --}}
+                                <div  id="delete-rol-modal-{{@index}}" class="modal" tabindex="-1" role="dialog"
+                                    aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h4 class="modal-title">Eliminar Rol</h4>
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                    aria-hidden="true">×</button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form action="/api/user-roles/update-rol/{{id_rol_usuario}}/state"
+                                                    method="POST">
+                                                    <div class="form-group text-center">
+                                                        <h6>¿Está seguro de eliminar este rol?.</h6>
+                                                        <h6>"{{nombre}}"</h6>
+                                                        <hr>
+                                                        <h6>Una vez eliminado no se mostrará en la lista de roles.</h6>
+                                                    
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-dark waves-effect" data-dismiss="modal">Cancelar</button>
+                                                        <button type="submit" class="btn btn-danger waves-effect waves-light">Eliminar</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{!-- END MODAL --}}
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ============================================================== -->
+<!-- End PAge Content -->
+<!-- ============================================================== -->

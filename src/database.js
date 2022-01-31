@@ -1,14 +1,18 @@
-const mongoose = require('mongoose');
+const { Pool } = require('pg');
 
-//const NOTES_APP_MONGODB_HOST = process.env.NOTES_APP_MONGODB_HOST;
-//const NOTES_APP_MONGODB_DATABASE = process.env.NOTES_APP_MONGODB_DATABASE;
+const {
+  DB_HOTS_RUTAS_UNIDAS, 
+  DB_NAME_RUTAS_UNIDAD, 
+  DB_PASS_RUTAS_UNIDAD, 
+  DB_USER_RUTAS_UNIDAD, 
+  DB_PORT_RUTAS_UNIDAD} = process.env;
 
-const {NOTES_APP_MONGODB_HOST, NOTES_APP_MONGODB_DATABASE} = process.env;
-const MONGODB_URI = `mongodb://localhost/notes-app-mongo`;
+const pool = new Pool({
+    host:DB_HOTS_RUTAS_UNIDAS,
+    user:DB_USER_RUTAS_UNIDAD,
+    password: DB_PASS_RUTAS_UNIDAD,
+    database: DB_NAME_RUTAS_UNIDAD,
+    port: DB_PORT_RUTAS_UNIDAD
+});
 
-mongoose.connect(MONGODB_URI, {
-    useUnifiedTopology: true,
-    useNewUrlParser: true
-
-}).then(db => console.log('Database is connected'))
-  .catch(err =>{console.log(err)});
+module.exports = pool;

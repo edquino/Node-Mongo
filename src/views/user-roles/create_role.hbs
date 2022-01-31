@@ -1,0 +1,59 @@
+<!-- ============================================================== -->
+<!-- Bread crumb and right sidebar toggle -->
+<!-- ============================================================== -->
+<div class="row page-titles">
+    <div class="col-md-12 align-self-center">
+        {{!-- <h3 class="text-themecolor">Starter Page</h3> --}}
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item active"><a href="/">Inicio</a></li>
+            <li class="breadcrumb-item active"><a href="/api/user-roles/list">Roles</a></li>
+            <li class="breadcrumb-item active">Crear Rol</li>
+        </ol>
+    </div>
+</div>
+<!-- ============================================================== -->
+<!-- End Bread crumb and right sidebar toggle -->
+<!-- ============================================================== -->
+<!-- ============================================================== -->
+<!-- Start Page Content -->
+<!-- ============================================================== -->
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Datos Generales</h4>
+                <form class="m-t-40" action="/api/user-roles/create-rol" method="POST" novalidate>
+                    <div class="form-group">
+                        <h5>T&iacute;tulo del Rol<span class="text-danger">(*)</span></h5>
+                        <div class="controls">
+                            <input type="text" name="nombre" class="form-control" required
+                                data-validation-required-message="Este campo debe ser completado">
+                        </div>
+                        {{!-- <div class="form-control-feedback"><small>Add <code>required</code> attribute to field for
+                                required validation.</small></div> --}}
+                    </div>
+                    <div class="form-group">
+                        <h5>Descripci&oacute;n del Rol<span class="text-danger">(*)</span></h5>
+                        <div class="controls">
+                            <textarea name="descripcion" id="textarea" class="form-control" required data-validation-required-message="Este campo debe ser completado"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <h5 class="m-t-30">Estado del Rol</h5>
+                        <select class="select2 form-control custom-select" style="width: 100%; height:36px;" name="estado">
+                            {{!-- <option>Select</option> --}}
+                            {{!-- <optgroup label="Alaskan/Hawaiian Time Zone"> --}}
+                                <option value="A"><strong>Activo</strong></option>
+                                <option value="I"><strong>Inactivo</strong></option>
+                            {{!-- </optgroup> --}}
+                        </select>
+                    </div>
+                    <div class="text-xs-right">
+                        <button type="submit" class="btn btn-info">Guardar</button>
+                        <a class="btn btn-inverse" href="/api/user-roles/list">Cancelar</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

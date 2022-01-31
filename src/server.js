@@ -12,7 +12,7 @@ const passport = require('passport');
 
 //Initializations
 const app = express();
-require('./database');
+//require('./database');
 require('./config/passport');
 
 //Settings
@@ -25,7 +25,8 @@ app.engine('hbs', hbs({
     defaultLayout: 'main',
     layoutsDir: path.join(app.get('views'), 'layouts'),
     partialsDir: path.join(app.get('views'), 'partials'),
-    extname: '.hbs'
+    extname: '.hbs',
+    helpers: require('./lib/handlebars')
 }));
 
 //Linea de codigo para utlizar la configuracion hecha en motor de plantillas. 
@@ -56,6 +57,9 @@ app.use( (req, res, next) => {
 
 
 //Routes
+
+require('./routes/routes.index')(app, passport);
+
 app.use(require('./routes/index.routes'));
 app.use(require('./routes/notes.routes'));
 app.use(require('./routes/user.routes'));

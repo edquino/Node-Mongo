@@ -1,7 +1,9 @@
+const db = require('../database');
 const indexCtrl = {};
 
-indexCtrl.renderIndex = (req, res) => {
-    res.render('index');
+
+indexCtrl.renderIndex = async(req, res) => {
+    res.render('home/home');
 }; 
 
 indexCtrl.renderAbout = (req, res) => {
